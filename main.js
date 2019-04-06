@@ -35,10 +35,10 @@ let dateHronos = (data) => {
             } else {
                 switch (this.activeDay) {
                     case this.count:
-                        this.activeDay = 0;
+                        this.activeDay = 1;
                         break;
                     case 5:
-                        this.activeDay = 1;
+                        this.activeDay = 0;
                         break;                    
                     default:
                         this.activeDay +=2;
@@ -80,7 +80,7 @@ let dateHronos = (data) => {
 
 
 dateHronos({
-    day: "25", 
+    day: "24", 
     month: "08", 
     year: "1001",
     container_id: '#container-message'
