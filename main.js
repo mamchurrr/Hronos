@@ -45,7 +45,6 @@ let dateHronos = (data) => {
                         this.activeDay +=3;
                 }
             } else {
-
                 switch (this.activeDay) {
                     case this.count:
                         this.activeDay = 3;
@@ -62,8 +61,6 @@ let dateHronos = (data) => {
                     default:
                         this.activeDay +=4;
                 }
-                console.log(this.activeDay )
-
             }
         }
     }
