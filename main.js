@@ -101,8 +101,8 @@ let dateHronos = (data) => {
 
 
 dateHronos({
-    day: "01", 
-    month: "01", 
+    day: "24", 
+    month: "08", 
     year: "1001",
     container_id: '#container-message'
 })
