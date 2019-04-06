@@ -22,7 +22,7 @@ let dateHronos = (data) => {
     this.month = parseInt(month);
     this.year = parseInt(year);
     this.container_id = document.querySelector(container_id);
-    this.days = ["Saturday", "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday",];
+    this.days = ["Wednesday","Thursday","Friday","Saturday", "Sunday","Monday","Tuesday"];
     this.count = days.length - 1;
     this.activeDay = 0;
 
@@ -67,11 +67,11 @@ let dateHronos = (data) => {
 
     this.dayOfHronos = () => {
         if(this.day < 24) {
-            for(let i = 23; i >= this.day; i--){
+            for(let i = 31; i >= this.day; i--){
                 this.activeDay === 0 ? this.activeDay = this.count : this.activeDay--
             }
         }else {
-            for(let i = 24; i < this.day; i++){
+            for(let i = 1; i <= this.day; i++){
                 this.activeDay === this.count ? this.activeDay = 0 : this.activeDay++
             }
         }
@@ -98,7 +98,7 @@ let dateHronos = (data) => {
 
 
 dateHronos({
-    day: "24", 
+    day: "25", 
     month: "08", 
     year: "1001",
     container_id: '#container-message'
