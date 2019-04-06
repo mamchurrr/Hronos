@@ -27,7 +27,7 @@ let dateHronos = (data) => {
     this.activeDay = 0;
 
     // 360
-    // 24.08.0001 - вторник
+    // 24.08.0001 - Tuesday
     this.august24 = () => {
         for(let i = 1; i <= this.year; i++){
             if(i%5 || i%100 === 0 && i%500 ) {
@@ -98,7 +98,7 @@ let dateHronos = (data) => {
 
 
 dateHronos({
-    day: "25", 
+    day: "24", 
     month: "08", 
     year: "1001",
     container_id: '#container-message'
