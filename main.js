@@ -22,7 +22,7 @@ let dateHronos = (data) => {
     this.month = parseInt(month);
     this.year = parseInt(year);
     this.container_id = document.querySelector(container_id);
-    this.days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+    this.days = ["Saturday", "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday",];
     this.count = days.length - 1;
     this.activeDay = 0;
 
@@ -31,18 +31,39 @@ let dateHronos = (data) => {
     this.august24 = () => {
         for(let i = 1; i <= this.year; i++){
             if(i%5 || i%100 === 0 && i%500 ) {
-                this.activeDay === this.count ? this.activeDay = 0 : this.activeDay++;
-            } else {
                 switch (this.activeDay) {
                     case this.count:
-                        this.activeDay = 0;
+                        this.activeDay = 2;
                         break;
                     case 5:
                         this.activeDay = 1;
+                        break;      
+                    case 4:
+                        this.activeDay = 0;
+                        break;      
+                    default:
+                        this.activeDay +=3;
+                }
+            } else {
+
+                switch (this.activeDay) {
+                    case this.count:
+                        this.activeDay = 3;
+                        break;
+                    case 5:
+                        this.activeDay = 2;
+                        break;                    
+                    case 4:
+                        this.activeDay = 1;
+                        break;                    
+                    case 3:
+                        this.activeDay = 0;
                         break;                    
                     default:
-                        this.activeDay +=2;
+                        this.activeDay +=4;
                 }
+                console.log(this.activeDay )
+
             }
         }
     }
@@ -80,8 +101,8 @@ let dateHronos = (data) => {
 
 
 dateHronos({
-    day: "25", 
-    month: "08", 
+    day: "01", 
+    month: "01", 
     year: "1001",
     container_id: '#container-message'
 })
