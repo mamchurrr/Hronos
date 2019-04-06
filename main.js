@@ -1,25 +1,28 @@
-// На планете Хронос празднуется тысячелетие основания колонии, 
-// сегодня 24 августа 1001 года, вторник. 
-// В день основания тоже был вторник.
 
-// Календарь Хроноса похож на земной: 12 месяцев по 30 дней, в феврале високосного года 31 день. 
-// Год является високосным, если его номер кратен 5, 
-// однако из кратных 100 високосными являются лишь кратные 500, 
-// например, 700, 800 и 900 — невисокосные года, 1000 — високосный.
+// On the planet Chronos, the millennium of the colony's foundation is celebrated
+// today is August 24, 1001, Tuesday.
+// On the founding day, too, was Tuesday.
 
-// Необходимо написать функцию, которая находит день недели на Хроносе для любой заданной даты.
+// Calendar of Cronos is similar to the Earth: 12 months for 30 days, in February of a leap year, 31 days.
+// A year is a leap year if its number is a multiple of 5,
+// however, from multiples of 100, leapfolds are only multiples of 500,
+// for example, 700, 800 and 900 - non-leap years, 1000 - leap years.
+
+// You need to write a function that finds the day of the week on Chronos for any given date.
 
 let dateHronos = (data) => {
     const {
         day,
         month, 
         year,
+        container_id
     } = data;
     
-    this.day = +day;
-    this.month = +month;
-    this.year = +year;
-    this.days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+    this.day = parseInt(day);
+    this.month = parseInt(month);
+    this.year = parseInt(year);
+    this.container_id = document.querySelector(container_id);
+    this.days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
     this.count = days.length - 1;
     this.activeDay = 0;
 
@@ -30,44 +33,55 @@ let dateHronos = (data) => {
             if(i%5 || i%100 === 0 && i%500 ) {
                 this.activeDay === this.count ? this.activeDay = 0 : this.activeDay++;
             } else {
-                this.activeDay === this.count 
-                    ? this.activeDay = 0 
-                        : this.activeDay === 5
-                            ? this.activeDay = 1
-                                : this.activeDay +=2;
+                switch (this.activeDay) {
+                    case this.count:
+                        this.activeDay = 0;
+                        break;
+                    case 5:
+                        this.activeDay = 1;
+                        break;                    
+                    default:
+                        this.activeDay +=2;
+                }
             }
         }
     }
+
     this.dayOfHronos = () => {
         if(this.day < 24) {
             for(let i = 23; i >= this.day; i--){
-                if(this.activeDay === 0) {
-                    this.activeDay = this.count;
-                } else {
-                    this.activeDay--;
-                }
+                this.activeDay === 0 ? this.activeDay = this.count : this.activeDay--
             }
         }else {
             for(let i = 24; i < this.day; i++){
-                if(this.activeDay === this.count) {
-                    this.activeDay = 0;
-                }else {
-                    this.activeDay++;
-                }
+                this.activeDay === this.count ? this.activeDay = 0 : this.activeDay++
             }
         }
     }
+
+    this.render = () => {
+        let currentDay = this.days[this.activeDay];
+
+        let h2 = document.createElement('h2');
+        h2.innerHTML = `The current date: ${day}.${month}.${year} year`;
+
+        let p = document.createElement('p');
+        p.innerHTML = `Today is a great day on the planet Chronos - ${currentDay}!)`;
+
+        this.container_id.appendChild(h2);
+        this.container_id.appendChild(p);
+    }
+
     this.august24();
     this.dayOfHronos();
-    
-    console.log(`На Хроносе сейчас замечетельный день - ${this.days[this.activeDay]}!)`);
-    alert(`На Хроносе сейчас замечетельный день - ${this.days[this.activeDay]}!)`)
+    this.render();  
  }
     
 
 
 dateHronos({
-    day: 25, 
-    month: 08, 
-    year: 1004,
+    day: "25", 
+    month: "08", 
+    year: "1001",
+    container_id: '#container-message'
 })
